@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Screen_Boundary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Scrollable section of homepage -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/Scroll_Boundary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <!--  All content in scrollable section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Scroll_Content_Boundary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/Nav_Bar">
+
+            <!-- Homepage banner, vocal waves -->
+            <ImageView
+                android:id="@+id/homepage_waves_banner"
+                android:layout_width="0dp"
+                android:layout_height="213dp"
+                android:rotation="-2"
+                android:scaleX="1.02"
+                android:translationY="-8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/vm_7_cover_waves_gfx" />
+
+
+            <!--Image, profile icon ... convert to ImageButton -->
+            <ImageView
+                android:id="@+id/profile_avatar"
+                style="@style/I1"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="@dimen/content_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/vm_7_avatar_photo_placeholder_gfx" />
+
+            <!-- Homepage banner, quote picture background -->
+            <ImageView
+                android:id="@+id/homepage_quote_bgnd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="@+id/profile_avatar"
+                app:layout_constraintStart_toStartOf="@+id/homepage_track_message"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_track_message"
+                app:srcCompat="@drawable/vm_7_cover_banner_img2" />
+
+            <!-- Homepage user greeting, Hi -->
+            <TextView
+                android:id="@+id/homepage_greeting"
+                style="@style/H1"
+                android:layout_marginStart="@dimen/content_margin"
+                android:layout_marginTop="90dp"
+                android:text="Hi, "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Homepage user greeting, the user's name -->
+            <TextView
+                android:id="@+id/homepage_greeting_name"
+                style="@style/H1"
+                android:layout_width="165dp"
+                android:textColor="@color/dark_purple"
+                android:text="User Name"
+                app:layout_constraintBaseline_toBaselineOf="@+id/homepage_greeting"
+                app:layout_constraintStart_toEndOf="@+id/homepage_greeting" />
+
+            <!-- Text, user's current track -->
+            <TextView
+                android:id="@+id/homepage_track_message"
+                style="@style/B2"
+                android:text="You are on the MAKE VARIABLE track."
+                app:layout_constraintStart_toStartOf="@+id/homepage_greeting"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_greeting_name" />
+
+            <!-- Text button, edit user's track -->
+            <TextView
+                android:id="@+id/homepage_track_edit"
+                style="@style/B2"
+                android:textColor="@color/dark_purple"
+                android:layout_marginStart="2dp"
+                android:clickable="true"
+                android:text="@string/button_edit"
+                app:layout_constraintBaseline_toBaselineOf="@+id/homepage_track_message"
+                app:layout_constraintStart_toEndOf="@+id/homepage_track_message" />
+
+            <!-- Frame Layout, to align the quotes -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                app:layout_constraintBottom_toBottomOf="@+id/homepage_quote_bgnd"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_quote_bgnd"
+                app:layout_constraintStart_toStartOf="@+id/homepage_quote_bgnd">
+
+                <!-- Text, quote -->
+                <TextView
+                    android:id="@+id/homepage_quote"
+                    style="@style/Quotes"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/random_quote" />
+            </FrameLayout>
+
+            <!-- Homepage header, goals section -->
+            <TextView
+                android:id="@+id/homepage_header_goals"
+                style="@style/H2"
+                android:layout_marginStart="@dimen/content_margin"
+                android:layout_marginTop="@dimen/homepage_section_top_content_margin"
+                android:text="Total Goals"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_quote_bgnd" />
+
+            <!-- Text, adjust goals -->
+            <TextView
+                android:id="@+id/homepage_adjust_goals"
+                style="@style/B3"
+                android:layout_marginEnd="0dp"
+                android:clickable="false"
+                android:text="Adjust Goals"
+                app:layout_constraintBaseline_toBaselineOf="@+id/homepage_header_goals"
+                app:layout_constraintEnd_toEndOf="@+id/profile_avatar" />
+
+            <!-- Image, days since last entry icon -->
+            <ImageView
+                android:id="@+id/homepage_entries_icon"
+                style="@style/I1"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_adjust_goals"
+                app:layout_constraintStart_toStartOf="@+id/homepage_header_goals"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_header_goals"
+                app:srcCompat="@drawable/vomo_app_assets_2_8_entry_gfx" />
+
+            <!-- Text, # days since entry label -->
+            <TextView
+                android:id="@+id/homepage_entries_label"
+                style="@style/B3.v1"
+                android:text="XX DAYS"
+                android:textColor="@color/dark_purple"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_entries_icon"
+                app:layout_constraintStart_toStartOf="@+id/homepage_entries_icon"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_entries_icon" />
+
+            <!-- Text, days since entry text -->
+            <TextView
+                android:id="@+id/homepage_entries_text"
+                style="@style/B4"
+                android:text="SINCE LAST ENTRY"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_entries_label"
+                app:layout_constraintStart_toStartOf="@+id/homepage_entries_label"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_entries_label" />
+
+            <!-- Image, days since last visit icon -->
+            <ImageView
+                android:id="@+id/homepage_visits_icon"
+                style="@style/I1"
+                android:layout_marginEnd="@dimen/goals_icon_spacing"
+                app:layout_constraintBottom_toBottomOf="@+id/homepage_entries_icon"
+                app:layout_constraintEnd_toStartOf="@+id/homepage_entries_icon"
+                app:srcCompat="@drawable/vomo_app_assets_2_8_visit_gfx" />
+
+            <!-- Text, # days since visit label -->
+            <TextView
+                android:id="@+id/homepage_visits_label"
+                style="@style/B3.v1"
+                android:text="XX DAYS "
+                android:textColor="@color/deep_blue"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_visits_icon"
+                app:layout_constraintStart_toStartOf="@+id/homepage_visits_icon"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_visits_icon" />
+
+            <!-- Text, days since visit text -->
+            <TextView
+                android:id="@+id/homepage_visits_text"
+                style="@style/B4"
+                android:text="SINCE LAST VISIT"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_visits_label"
+                app:layout_constraintStart_toStartOf="@+id/homepage_visits_label"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_visits_label" />
+
+            <!-- Image, goal completed icon -->
+            <ImageView
+                android:id="@+id/homepage_goals_icon"
+                style="@style/I1"
+                android:layout_marginStart="@dimen/goals_icon_spacing"
+                app:layout_constraintBottom_toBottomOf="@+id/homepage_entries_icon"
+                app:layout_constraintStart_toEndOf="@+id/homepage_entries_icon"
+                app:srcCompat="@drawable/vomo_app_assets_2_8_goal_gfx" />
+
+            <!-- Progress Bar, goals completion -->
+            <ProgressBar
+                android:id="@+id/homepage_goals_progress"
+                android:layout_width="@dimen/progress_bar_size"
+                android:layout_height="@dimen/progress_bar_size"
+                android:indeterminateOnly="false"
+                android:progressDrawable="@drawable/progress_bar_goals"
+                tools:progress="40"
+                app:layout_constraintStart_toStartOf="@id/homepage_goals_icon"
+                app:layout_constraintEnd_toEndOf="@id/homepage_goals_icon"
+                app:layout_constraintTop_toTopOf="@id/homepage_goals_icon"
+                app:layout_constraintBottom_toBottomOf="@id/homepage_goals_icon" />
+
+            <!-- Text, % goal done label -->
+            <TextView
+                android:id="@+id/homepage_goals_label"
+                style="@style/B3.v1"
+                android:text="XX%"
+                android:textColor="@color/teal"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_goals_icon"
+                app:layout_constraintStart_toStartOf="@+id/homepage_goals_icon"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_goals_icon" />
+
+            <!-- Text, % goal complete text -->
+            <TextView
+                android:id="@+id/homepage_goals_text"
+                style="@style/B4"
+                android:text="COMPLETED GOAL"
+                app:layout_constraintEnd_toEndOf="@+id/homepage_goals_label"
+                app:layout_constraintStart_toStartOf="@+id/homepage_goals_label"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_goals_label" />
+
+            <!-- Homepage header, entries section -->
+            <TextView
+                android:id="@+id/homepage_header_entries"
+                style="@style/H2"
+                android:layout_marginStart="@dimen/content_margin"
+                android:layout_marginTop="@dimen/homepage_section_bottom_content_margin"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Entries"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_visits_text" />
+
+            <!-- Text, details -->
+            <TextView
+                android:id="@+id/homepage_details"
+                style="@style/B3"
+                android:layout_marginEnd="0dp"
+                android:text="Details"
+                app:layout_constraintBaseline_toBaselineOf="@+id/homepage_header_entries"
+                app:layout_constraintEnd_toEndOf="@+id/profile_avatar" />
+
+            <!-- Horiz scroll view, calendar days -->
+            <HorizontalScrollView
+                android:id="@+id/homepage_entries_cal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/content_margin"
+                android:layout_marginTop="@dimen/homepage_section_top_content_margin"
+                android:layout_marginEnd="@dimen/content_margin"
+                android:layout_marginBottom="@dimen/homepage_section_bottom_content_margin"
+                android:foregroundGravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/homepage_header_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_header_entries">
+
+
+                <!--                RelativeLayout-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <!--Text, day of the week-->
+                        <TextView
+                            android:id="@+id/entries_dow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="DOW"
+                            android:textAlignment="center"
+                            android:textColor="@color/body_copy_gray"
+                            android:textSize="10sp" />
+
+                        <!--Text, numerical day of month-->
+                        <TextView
+                            android:id="@+id/entries_dom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="XX"
+                            android:textAlignment="center"
+                            android:textColor="@color/deep_blue"
+                            android:textSize="32sp"
+                            app:layout_constraintTop_toBottomOf="@+id/entries_dow" />
+
+                        <!--Text, days since last entry-->
+                        <TextView
+                            android:id="@+id/entries_days_since"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="X days ago"
+                            android:textAlignment="center"
+                            android:textColor="@color/body_copy_gray"
+                            android:textSize="6sp"
+                            app:layout_constraintTop_toBottomOf="@+id/entries_dom" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <!-- Homepage header, data section -->
+            <TextView
+                android:id="@+id/homepage_header_data"
+                style="@style/H2"
+                android:layout_marginStart="@dimen/content_margin"
+                android:layout_marginTop="@dimen/homepage_section_bottom_content_margin"
+                android:text="Data"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homepage_entries_cal" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom App Bar, app navigation -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/Nav_Bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="0dp"
+        app:fabCradleRoundedCornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/Nav_Bar_View"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:elevation="0dp"
+            app:itemIconSize="@dimen/nav_bar_icon"
+            app:itemIconTint="@color/body_copy_gray"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/nav_bar_menu" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <!--    Floating Action Button, record button   -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FAB_Record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:backgroundTint="@color/white"
+        app:borderWidth="0dp"
+        app:elevation="4dp"
+        app:fabCustomSize="85dp"
+        app:layout_anchor="@id/Nav_Bar"
+        app:maxImageSize="@dimen/record_button"
+        app:srcCompat="@drawable/vm_record_mic_icon"
+        app:tint="@null" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
